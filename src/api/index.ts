@@ -1,6 +1,7 @@
 import axios from 'axios';
 import type {
   AuthResponse,
+  GoogleAuthResponse,
   LoginRequest,
   RegisterRequest,
   UpdateProfileRequest,
@@ -55,6 +56,9 @@ export const authApi = {
 
   register: (data: RegisterRequest) =>
     api.post<ApiResponse<AuthResponse>>('/v1/auth/register', data).then((r) => r.data.data),
+
+  googleLogin: (code: string) =>
+    api.post<ApiResponse<GoogleAuthResponse>>('/v1/auth/google', { code }).then((r) => r.data.data),
 
   getProfile: () =>
     api.get<ApiResponse<User>>('/v1/auth/profile').then((r) => r.data.data),
