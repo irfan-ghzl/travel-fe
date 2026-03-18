@@ -13,6 +13,11 @@ export interface AuthResponse {
   user: User;
 }
 
+export interface GoogleAuthResponse {
+  access_token: string;
+  user: User;
+}
+
 export interface LoginRequest {
   email: string;
   password: string;
